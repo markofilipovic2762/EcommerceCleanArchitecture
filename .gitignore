@@ -1,0 +1,9 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+/Web/appsettings.json
+/Web/appsettings.Development.json
+/.idea/.idea.EcommerceCleanArchitecture/.idea
+/.vs
