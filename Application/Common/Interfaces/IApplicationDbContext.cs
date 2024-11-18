@@ -18,4 +18,6 @@ public interface IApplicationDbContext
     DbSet<OrderDetail> OrderDetails { get; }
     DbSet<Order> Orders { get; }
     DbSet<Supplier> Suppliers { get; }
+
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
