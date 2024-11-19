@@ -1,6 +1,6 @@
 ﻿
-using Application.Categories.EventHandlers;
 using Application.Common.Interfaces;
+using Domain.Events;
 
 namespace Application.Categories.Commands.CreateCategory;
 
@@ -25,7 +25,7 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
             Name = request.Name
         };
 
-        entity.AddDomainEvent(new CategoryCreatedEventHandler(entity));
+        entity.AddDomainEvent(new CategoryCreatedEvent(entity));
 
         _context.Categories.Add(entity);
 

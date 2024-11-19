@@ -1,13 +1,21 @@
-﻿using Domain.Common;
+﻿using Domain.Events;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Categories.EventHandlers;
 
-public class CategoryCreatedEventHandler : INotificationHandler<>
+public class CategoryCreatedEventHandler : INotificationHandler<CategoryCreatedEvent>
 {
-    private Category entity;
+    private readonly ILogger<CategoryCreatedEventHandler> _logger;
 
-    public CategoryCreatedEventHandler(Category entity)
+    public CategoryCreatedEventHandler(ILogger<CategoryCreatedEventHandler> logger)
     {
-        this.entity = entity;
+        _logger = logger;
+    }
+
+    public Task Handle(CategoryCreatedEvent notification, CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("CleanArchitecture Domain Event: {DomainEvent}", notification.GetType().Name);
+        
+        return Task.CompletedTask;
     }
 }
